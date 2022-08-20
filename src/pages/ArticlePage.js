@@ -1,15 +1,27 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import articleContent from "./article-content";
+import ArticlesList from "../components/ArticlesList";
+import NotFoundPage from "./NotFoundPage";
 
-const ArticlesPage = () => (
+const ArticlesPage = () => {
+    const { name } = useParams();
+    const article = articleContent.find(article => article.name === name)
 
-    <>
+    const otherArticles = articleContent.filter(article => article.name !== name);
 
-        <h1>This is an article on this PAge </h1>
+    if (!article) return <NotFoundPage />
+    return (
 
+        <>
+            <h1>{article.title}</h1>
+            {article.content.map((paragraph, key) => (
+                <p key={key}>{paragraph}</p>
+            ))}
+            <h3>Other Related Articles</h3>
+            <ArticlesList articles={otherArticles} />
+        </>
 
-
-    </>
-
-);
-
+    );
+}
 export default ArticlesPage;
