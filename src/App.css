@@ -70,3 +70,22 @@ p {
   border-bottom: 2px solid black;
   padding: 16px;
 }
+
+#profile {
+  position: absolute;
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+  left: 300px;
+  top: 150px;
+  border-radius: 50%;
+}
+
+#about-me {
+  text-align: justify;
+
+}
+
+#about-section {
+  display: flex;
+}
